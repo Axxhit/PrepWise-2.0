@@ -1,0 +1,4 @@
+provider,model,avg_score,avg_latency_s,avg_output_tokens
+gemini,gemini,1.6,19.432,19
+llama,llama-3.3-70b-versatile,5,0.618,83
+mixtral,mixtral,1,0,0

@@ -1,0 +1,145 @@
+provider,model,prompt_id,prompt,output,input_tokens,output_tokens,latency_s,output_length,manual_score
+gemini,gemini,1,Generate one interview question about building a Random Forest classifier.,"ERROR: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",0,0,0,0,1
+gemini,gemini-3.5-flash,2,Generate one interview question about deploying ML models on Android devices.,,13,20,4.105,92,1
+gemini,gemini-3.5-flash,3,Generate one interview question about reducing false negatives in classification.,Here is a scenario-based interview question designed for a Data Science or Machine Learning Engineer role:,12,20,4.358,106,1
+gemini,gemini-3.5-flash,4,Generate one interview question about feature engineering for behavioral data.,"Here is a highly relevant, scenario-based interview question for a Data Scientist or Machine Learning",12,18,4.477,101,1
+gemini,gemini-3.5-flash,5,Generate one interview question about Flask REST API design for ML backends.,"**Question:**
+
+""When deploying a large Machine Learning model (e.g., a",15,19,4.148,70,1
+gemini,gemini-3.5-flash,6,Generate one ML system design interview question about real-time inference.,"Here is a highly realistic, industry-standard ML system design interview question focused on real-time inference",14,20,3.88,112,1
+gemini,gemini-3.5-flash,7,Generate one interview question about choosing between RAG and fine-tuning.,"**""Imagine you are building an AI assistant for a financial services firm. The assistant needs to draft",15,20,62.587,103,2
+gemini,gemini-3.5-flash,8,Generate one interview question about monitoring ML models in production.,"Here is a high-quality, scenario-based interview question for a Machine Learning Engineer or",12,18,63.284,92,1
+gemini,gemini-3.5-flash,9,Generate one interview question about handling class imbalance in training data.,"Here is a highly effective, scenario-based interview question for a Data Science or Machine Learning role:",13,20,49.322,106,1
+gemini,gemini-3.5-flash,10,Generate one interview question about latency vs accuracy trade-offs.,**Scenario:** You are designing a real-time fraud detection system for a credit card processor.,13,19,53.987,95,2
+gemini,gemini-3.5-flash,11,Generate one interview question about transformer attention mechanisms.,"**Question:**
+
+In the formula for Scaled Dot-Product Attention:
+
+$$\text{Attention",10,20,4.194,82,1
+gemini,gemini-3.5-flash,12,Generate one interview question about tokenization strategies for LLMs.,Here is a high-quality interview question for a Senior Machine Learning / NLP Engineer role,13,17,24.268,91,2
+gemini,gemini-3.5-flash,13,Generate one interview question about overfitting and regularization.,"Here is a high-quality interview question for a Data Science or Machine Learning role:
+
+**Question",10,20,4.132,98,2
+gemini,gemini-3.5-flash,14,Generate one interview question about transfer learning vs training from scratch.,Here is a high-quality interview question designed for a Machine Learning or Deep Learning Engineer role:,13,20,4.235,105,3
+gemini,gemini-3.5-flash,15,Generate one interview question about gradient descent optimization.,"**Question:**
+
+""In deep learning, we often encounter pathological curvature, such as saddle",10,18,4.754,91,3
+gemini,gemini-3.5-flash,16,Generate one behavioral interview question about handling a failed ML experiment.,"**""Tell me about a time when you invested significant time and resources into a machine",13,17,46.49,87,4
+gemini,gemini-3.5-flash,17,Generate one behavioral interview question about explaining ML results to non-technical stakeholders.,"""Tell me about a time when you had to explain the results of a complex machine",16,17,3.996,78,1
+gemini,gemini-3.5-flash,18,Generate one behavioral interview question about prioritizing ML tasks under deadlines.,"**""Tell me about a time when you were facing a tight deadline on a machine learning project",13,19,3.859,91,1
+gemini,gemini-3.5-flash,19,Generate one behavioral interview question about learning a new ML framework quickly.,"Here is a behavioral interview question tailored for this scenario:
+
+> **""Describe a time when",14,19,3.704,94,2
+gemini,gemini,20,Generate one behavioral interview question about collaborating with data engineers.,"ERROR: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\nPlease retry in 13.240803872s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13s'}]}}",0,0,0,0,1
+llama,llama-3.3-70b-versatile,1,Generate one interview question about building a Random Forest classifier.,"**Interview Question:** 
+
+How would you tune the hyperparameters of a Random Forest classifier, such as the number of decision trees, the maximum depth of each tree, and the number of features to consider at each split, to optimize its performance on a given classification problem, and what metrics would you use to evaluate the model's performance during the tuning process?",46,72,0.821,376,5
+llama,llama-3.3-70b-versatile,2,Generate one interview question about deploying ML models on Android devices.,"Here's a potential interview question:
+
+**Question:** What are some key considerations when deploying a machine learning (ML) model on an Android device, and how would you optimize the model's performance and memory usage to ensure a seamless user experience?",47,49,0.465,259,5
+llama,llama-3.3-70b-versatile,3,Generate one interview question about reducing false negatives in classification.,"What strategies would you employ to reduce false negatives in a classification model, particularly in a scenario where the cost of a false negative is significantly higher than the cost of a false positive, such as in medical diagnosis or fraud detection?",46,46,0.366,255,5
+llama,llama-3.3-70b-versatile,4,Generate one interview question about feature engineering for behavioral data.,"Here's a potential interview question about feature engineering for behavioral data:
+
+**Question:** ""Suppose you're working on a project to predict customer churn for an e-commerce platform, and you have access to a dataset containing user interaction logs, including clickstream data, search queries, and purchase history. What features would you engineer from this behavioral data to improve the accuracy of your churn prediction model, and how would you handle potential issues like sparse data, high dimensionality, and temporal correlations?""",46,98,0.738,547,5
+llama,llama-3.3-70b-versatile,5,Generate one interview question about Flask REST API design for ML backends.,"**Interview Question:**
+
+Design a Flask REST API for a machine learning model that predicts house prices based on features like number of bedrooms, square footage, and location. The API should have endpoints for training the model, making predictions, and retrieving model performance metrics. How would you structure your API, and what considerations would you take into account for scalability, security, and data validation? 
+
+**Example areas to cover in your response:**
+
+* API endpoint design (e.g., `/train`, `/predict`, `/metrics`)
+* Request and response data formats (e.g., JSON, CSV)
+* Data validation and error handling
+* Model deployment and updating strategies
+* Security measures (e.g., authentication, authorization)
+* Scalability considerations (e.g., load balancing, containerization)",49,158,0.778,800,5
+llama,llama-3.3-70b-versatile,6,Generate one ML system design interview question about real-time inference.,"**Real-Time Inference System Design Question**
+
+Design a real-time inference system for a smart home security camera that can detect and classify people, pets, and objects (e.g., packages, bikes) within 200ms of video frame capture. The system should:
+
+1. Handle variable video frame rates (10-30 FPS) and resolutions (720p-4K).
+2. Utilize a pre-trained object detection model (e.g., YOLO, SSD) and integrate it with a custom classification model for people, pets, and objects.
+3. Ensure low latency and high accuracy (>95%) for real-time alerts and notifications.
+4. Support multiple camera feeds (up to 10) and scale horizontally to accommodate increasing camera deployments.
+5. Provide a RESTful API for querying detection results and camera metadata.
+
+**Constraints:**
+
+* Limited computational resources: 4 CPU cores, 16 GB RAM, and 1 NVIDIA Tesla T4 GPU per node.
+* Camera feeds are transmitted over a low-latency, high-bandwidth network (e.g., 1 GbE).
+* System should be designed for 24/7 operation with automated monitoring and alerting for potential issues.
+
+**Evaluation Criteria:**
+
+* System architecture and component design
+* Model selection, optimization, and integration
+* Real-time processing and latency reduction techniques
+* Scalability, reliability, and fault tolerance
+* API design and documentation
+
+**Deliverables:**
+
+* A high-level system architecture diagram
+* A detailed description of the system components and their interactions
+* A discussion of the trade-offs and design decisions made
+* A simple prototype or proof-of-concept implementation (optional)",47,339,1.53,1581,5
+llama,llama-3.3-70b-versatile,7,Generate one interview question about choosing between RAG and fine-tuning.,"Here's a potential interview question:
+
+""Suppose you're working on a natural language processing task and you have the option to either use a Retrieval-Augmented Generator (RAG) model or fine-tune a pre-trained language model. What factors would you consider when deciding between these two approaches, and how would you determine which one is more suitable for your specific task?""",49,76,0.501,382,5
+llama,llama-3.3-70b-versatile,8,Generate one interview question about monitoring ML models in production.,"Here's an interview question about monitoring ML models in production:
+
+**Question:** ""What metrics or indicators would you use to monitor the performance of a machine learning model in production, and how would you detect and respond to concept drift or data distribution changes that could impact the model's accuracy or reliability?""",46,60,0.636,336,5
+llama,llama-3.3-70b-versatile,9,Generate one interview question about handling class imbalance in training data.,"Here's a potential interview question:
+
+**Question:** ""Suppose you're training a binary classification model on a dataset where the positive class (e.g. instances of fraud) makes up only 1% of the total data, while the negative class (e.g. non-fraudulent transactions) makes up the remaining 99%. What techniques would you use to handle this class imbalance, and how would you evaluate the effectiveness of your approach?""",47,90,0.619,422,5
+llama,llama-3.3-70b-versatile,10,Generate one interview question about latency vs accuracy trade-offs.,"Here's a potential interview question:
+
+""Can you describe a scenario where you had to balance latency and accuracy in a machine learning model or system? How did you approach the trade-off between the two, and what metrics or techniques did you use to optimize for the desired balance between speed and accuracy?""",46,60,0.599,313,5
+llama,llama-3.3-70b-versatile,11,Generate one interview question about transformer attention mechanisms.,"Here's a potential interview question about transformer attention mechanisms:
+
+**Question:** Can you explain the difference between self-attention and multi-head attention in transformer models, and how do these mechanisms enable the model to weigh the importance of different input elements when generating output? 
+
+(This question assesses the candidate's understanding of the transformer architecture and its attention mechanisms, as well as their ability to articulate complex concepts.)",44,80,0.542,491,5
+llama,llama-3.3-70b-versatile,12,Generate one interview question about tokenization strategies for LLMs.,"Here's a potential interview question:
+
+""What are some trade-offs to consider when deciding between subword tokenization (e.g. WordPiece, BPE) and character-level tokenization for a large language model, and how would you determine the most effective tokenization strategy for a specific application or dataset?""",48,61,0.654,312,5
+llama,llama-3.3-70b-versatile,13,Generate one interview question about overfitting and regularization.,"What methods would you use to prevent overfitting in a machine learning model, and how do regularization techniques such as L1 and L2 regularization differ in their approach to reducing model complexity and preventing overfitting?",46,44,0.399,230,5
+llama,llama-3.3-70b-versatile,14,Generate one interview question about transfer learning vs training from scratch.,"Here's a potential interview question:
+
+**Question:** ""When would you choose to use transfer learning versus training a model from scratch, and what factors would influence your decision in a real-world project?""",47,40,0.436,212,5
+llama,llama-3.3-70b-versatile,15,Generate one interview question about gradient descent optimization.,"**Interview Question:** 
+
+Can you explain how the learning rate in gradient descent optimization affects the convergence of the model, and what are some common techniques to adapt or adjust the learning rate during the training process to achieve optimal results?",44,46,0.692,263,5
+llama,llama-3.3-70b-versatile,16,Generate one behavioral interview question about handling a failed ML experiment.,"Here's a behavioral interview question about handling a failed ML experiment:
+
+""Can you describe a time when a machine learning experiment you designed and implemented did not produce the expected results? How did you troubleshoot the issue, and what changes did you make to the experiment or model to improve its performance?""",47,60,0.515,327,5
+llama,llama-3.3-70b-versatile,17,Generate one behavioral interview question about explaining ML results to non-technical stakeholders.,"Here's a behavioral interview question:
+
+""Can you describe a situation where you had to present complex machine learning model results to a non-technical stakeholder, such as a business leader or product manager? How did you approach explaining the results in a way that was easy for them to understand, and what strategies did you use to ensure they were able to make informed decisions based on your findings?""",50,79,0.478,412,5
+llama,llama-3.3-70b-versatile,18,Generate one behavioral interview question about prioritizing ML tasks under deadlines.,"Here's a behavioral interview question about prioritizing ML tasks under deadlines:
+
+""Can you describe a situation where you had to prioritize multiple machine learning tasks with varying levels of complexity and urgency, all with a tight deadline? How did you determine which tasks to focus on first, and what strategies did you use to manage your time and resources to meet the deadline while still delivering high-quality results?""",48,78,0.568,434,5
+llama,llama-3.3-70b-versatile,19,Generate one behavioral interview question about learning a new ML framework quickly.,"Can you describe a situation where you had to learn a new machine learning framework, such as TensorFlow or PyTorch, in a short amount of time, and how you went about doing so, including any resources you used, challenges you faced, and how you were able to apply your new knowledge to a project or problem?",48,66,0.481,307,5
+llama,llama-3.3-70b-versatile,20,Generate one behavioral interview question about collaborating with data engineers.,"Here's a behavioral interview question about collaborating with data engineers:
+
+""Can you describe a time when you had to work closely with a data engineering team to design and implement a data pipeline or architecture for a project? How did you ensure effective communication and collaboration with the data engineers, and what was the outcome of the project?""",46,65,0.548,362,5
+mixtral,mixtral,1,Generate one interview question about building a Random Forest classifier.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,2,Generate one interview question about deploying ML models on Android devices.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,3,Generate one interview question about reducing false negatives in classification.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,4,Generate one interview question about feature engineering for behavioral data.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,5,Generate one interview question about Flask REST API design for ML backends.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,6,Generate one ML system design interview question about real-time inference.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,7,Generate one interview question about choosing between RAG and fine-tuning.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,8,Generate one interview question about monitoring ML models in production.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,9,Generate one interview question about handling class imbalance in training data.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,10,Generate one interview question about latency vs accuracy trade-offs.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,11,Generate one interview question about transformer attention mechanisms.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,12,Generate one interview question about tokenization strategies for LLMs.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,13,Generate one interview question about overfitting and regularization.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,14,Generate one interview question about transfer learning vs training from scratch.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,15,Generate one interview question about gradient descent optimization.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,16,Generate one behavioral interview question about handling a failed ML experiment.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,17,Generate one behavioral interview question about explaining ML results to non-technical stakeholders.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,18,Generate one behavioral interview question about prioritizing ML tasks under deadlines.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,19,Generate one behavioral interview question about learning a new ML framework quickly.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
+mixtral,mixtral,20,Generate one behavioral interview question about collaborating with data engineers.,"ERROR: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}",0,0,0,0,1
