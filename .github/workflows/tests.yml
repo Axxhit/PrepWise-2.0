@@ -1,0 +1,86 @@
+name: PrepWise Test Suite
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Start FastAPI server
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          LLM_PROVIDER: gemini
+          LLM_TEMPERATURE: "0.7"
+        run: |
+          uvicorn main:app --host 0.0.0.0 --port 8000 &
+          sleep 5  # wait for server to start
+
+      - name: Run retrieval tests (fast, no LLM)
+        run: |
+          pytest tests/test_retrieval.py tests/test_safety.py -v \
+            -m "not slow" \
+            --html=reports/report.html \
+            --self-contained-html
+            
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Run safety tests
+        run: |
+          pytest tests/test_safety.py -v \
+            --html=reports/safety_report.html \
+            --self-contained-html
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Run injection tests
+        run: |
+          pytest tests/test_prompt_injection.py -v \
+            --html=reports/injection_report.html \
+            --self-contained-html
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Upload test reports
+        uses: actions/upload-artifact@v4
+        if: always()  # upload even if tests fail
+        with:
+          name: test-reports
+          path: reports/
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ruff
+        run: pip install ruff
+
+      - name: Lint with ruff
+        run: ruff check . --ignore E501  # ignore line length

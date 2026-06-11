@@ -1,22 +1,28 @@
 import os
 import uuid
+import re
 import fitz  # PyMuPDF
+from sympy import re
 import tiktoken
 from sentence_transformers import SentenceTransformer
 import chromadb
-import google.generativeai as genai
 from dotenv import load_dotenv
 from fastapi import FastAPI, UploadFile , File , HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from llm_client import get_client
+from google import genai as google_genai
+from google.genai import types as genai_types
+import time
 
 load_dotenv()
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-gemini = genai.GenerativeModel("gemini-3.5-flash")
+# Use environment variable to switch providers (default: gemini)
+llm_client = get_client(os.getenv("LLM_PROVIDER", "gemini"))
+gemini_client = google_genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 app = FastAPI()
 
 embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
-chroma_client = chromadb.Client()
+chroma_client = chromadb.PersistentClient(path="./chroma_db")
 
 app.add_middleware(
     CORSMiddleware,
@@ -140,17 +146,17 @@ async def embed_pdf(session_id: str):
     pdf_path = os.path.join(UPLOAD_DIR, f"{session_id}.pdf")
 
     if not os.path.exists(pdf_path):
-        raise HTTPException(status_code=404, detail="PDF not found for the given session_id.")
-    
-    text = extract_text_from_pdf(pdf_path)
-    chunks = chunk_text(text)
+        raise HTTPException(status_code=404, detail="PDF not found.")
 
+    text = extract_text_from_pdf(pdf_path)
+    text = scrub_pii(text)          # scrub before chunking
+    chunks = chunk_text(text)
     collection = embed_and_store(session_id, chunks)
 
     return {
         "session_id": session_id,
-        "total_chunks": len(chunks),
-        "collection_name": collection.name
+        "chunks_embedded": collection.count(),
+        "status": "stored in chromadb"
     }
 
 
@@ -167,32 +173,65 @@ def build_prompt(question_topic: str, context_chunks: list[str]) -> str:
     -Return excactly 3 questions, numbered 1-3
     """
 
-@app.get("/generate_questions")
+@app.get("/generate-questions")
 async def generate_questions(session_id: str, topic: str):
-    #step 1 - retrieve relevant chunks
+    # sanitize input
+    topic = sanitize_input(topic, max_length=200)
+
+    if not topic:
+        raise HTTPException(status_code=400, detail="Topic cannot be empty after sanitization.")
+
     try:
-        collection = chroma_client.get_collection(name=session_id)
-    except Exception:
-        raise HTTPException(status_code=404, detail="session not found. run /embed first to create collection.")
+        try:
+            collection = chroma_client.get_collection(name=session_id)
+        except Exception as e:
+            raise HTTPException(status_code=404, detail=f"Session not found. Run /embed first.")
+
+        query_embedding = embedding_model.encode([topic]).tolist()
+        results = collection.query(
+            query_embeddings=query_embedding,
+            n_results=min(3, collection.count())
+        )
+        chunks = results['documents'][0]
+
+        prompt_with_rag = build_prompt(topic, chunks)
+        prompt_without_rag = build_prompt(topic, [])
+
+        try:
+            response_with = llm_client.chat(prompt_with_rag)
+            time.sleep(13)
+            response_without = llm_client.chat(prompt_without_rag)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"LLM error: {str(e)}")
+
+        return {
+            "topic": topic,
+            "with_rag": response_with["text"],
+            "without_rag": response_without["text"],
+            "chunks_used": chunks
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
     
-    query_embedding = embedding_model.encode([topic]).tolist()
-    results = collection.query(
-        query_embeddings=query_embedding,
-        n_results=min(3, collection.count())  # get top 3 most relevant chunks
-    )
-    chunks = results['documents'][0]
 
-    #step 2 - build prompt and generate questions using Gemini with context
-    prompt_with_rag = build_prompt(topic, chunks)
-    prompt_without_rag = build_prompt(topic, [])  # empty context for ablation
 
-    #step3 - call gemini with and without context for comparison
-    response_with = gemini.generate_content(prompt_with_rag)
-    response_without = gemini.generate_content(prompt_without_rag)
+def sanitize_input(text: str, max_length: int = 500) -> str:
+    # strip null bytes
+    text = text.replace("\x00", "")
+    # remove control characters
+    text = re.sub(r'[\x01-\x08\x0b\x0c\x0e-\x1f\x7f]', '', text)
+    # truncate to max length
+    text = text[:max_length]
+    return text.strip()
 
-    return {
-        "topic": topic,
-        "with_rag": response_with.text,
-        "without_rag": response_without.text,
-        "chunks_used": chunks
-    }
+def scrub_pii(text: str) -> str:
+    """Remove common PII patterns before storing or returning chunks."""
+    # email addresses
+    text = re.sub(r'[\w\.-]+@[\w\.-]+\.\w+', '[EMAIL]', text)
+    # phone numbers (Indian + international formats)
+    text = re.sub(r'(\+91[\-\s]?)?[6-9]\d{9}', '[PHONE]', text)
+    # LinkedIn/GitHub URLs with usernames
+    text = re.sub(r'(linkedin\.com/in/|github\.com/)[\w\-]+', r'\1[USERNAME]', text)
+    return text
